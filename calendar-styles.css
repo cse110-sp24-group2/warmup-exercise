@@ -76,3 +76,22 @@ body {
 .october { color: #d45810; }  
 .november { color: #343a40; } 
 .december { color: #53697d; } 
+
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: rgba(207, 184, 184, 0.8); 
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+
+.single_weekday {
+    padding: 10px;
+    background-color: pink;
+    text-align: center;
+    border-radius: 5px;
+    color: #333;
+}

@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentDate = new Date();
     let currentMonth = currentDate.getMonth();
     let currentYear = currentDate.getFullYear();
+    const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const weekdaysRow = document.createElement('div');
 
     const monthBackgrounds = [
         "url('january.jpg')", "url('february.jpg')", "url('marchh.jpg')",
@@ -17,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const monthClasses = ["january", "february", "march", "april", "may", "june",
                           "july", "august", "september", "october", "november", "december"];
-
+   
     function updateMonthYear() {
         monthLabel.textContent = `${monthNames[currentMonth]} ${currentYear}`;
         document.body.style.backgroundImage = monthBackgrounds[currentMonth];
@@ -28,6 +30,23 @@ document.addEventListener('DOMContentLoaded', function() {
     function daysInMonth(month, year) {
         return new Date(year, month + 1, 0).getDate();
     }
+
+    function createWeekdayLabels() {
+       
+        weekdaysRow.classList.add('weekdays');
+    
+        weekdays.forEach(day => {
+            const dayElement = document.createElement('div');
+            dayElement.classList.add('weekdays', 'single_weekday');
+            dayElement.textContent = day;
+            weekdaysRow.appendChild(dayElement);
+        });
+    
+        return weekdaysRow;
+    }
+
+
+
 
     function createCalendar(month, year) {
         updateMonthYear();
