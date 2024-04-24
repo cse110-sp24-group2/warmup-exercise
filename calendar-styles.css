@@ -4,7 +4,9 @@ body {
     background-size: cover;
     color: #333;
 }
-
+.diff-month {
+    color: gray;
+}
 .calendar-header {
     display: flex;
     justify-content: space-between;

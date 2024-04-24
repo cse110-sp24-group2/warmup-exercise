@@ -31,7 +31,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function createCalendar(month, year) {
         updateMonthYear();
+
+        // Get some of the info to build dates
+        let firstDay = new Date(year, month, 1).getDay();
+        let lastDate = new Date(year, month + 1, 0).getDate();
+        let lastDay = new Date(year, month + 1, 0).getDay();
+        let lastDatePrevMonth = new Date(year, month, 0).getDate();
+
         calendarContainer.innerHTML = ''; // Clear previous calendar
+
+        // Add the beginning days of the previous month
+        for (let i = firstDay; i > 0; i--) {
+            const dayElement = document.createElement('div');
+            dayElement.classList.add('day', 'diff-month');
+            dayElement.textContent = lastDatePrevMonth - i + 1;
+            calendarContainer.appendChild(dayElement);
+        }
+        // Add the days of the current month
         for (let day = 1; day <= daysInMonth(month, year); day++) {
             const dayElement = document.createElement('div');
             dayElement.classList.add('day');
@@ -40,6 +56,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert(`You clicked on ${day} of ${monthNames[month]}, ${year}`);
             };
             calendarContainer.appendChild(dayElement);
+        }
+
+        // Fill the week with days from the next month
+        let num = 1;
+        for (let i = lastDay+1; i <= 6; i++) {
+            const dayElement = document.createElement('div');
+            dayElement.classList.add('day', 'diff-month');
+            dayElement.textContent = num;
+            calendarContainer.appendChild(dayElement);
+            num++;
         }
     }
 
