@@ -45,6 +45,23 @@ body {
     box-shadow: 0 4px 5px rgba(0,0,0,0.1);
 }
 
+.day-names {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 0px;
+    width: 95%;
+    max-width: 660px;
+    margin: auto;
+}
+
+.day-name {
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+    border: none;
+}
+
 .day.spring {
     color: #ff69b4;
 }

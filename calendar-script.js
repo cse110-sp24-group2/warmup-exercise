@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentYear = currentDate.getFullYear();
 
     const monthBackgrounds = [
-        "url('january.jpg')", "url('february.jpg')", "url('marchh.jpg')",
-        "url('april.jpg')", "url('may.jpg')", "url('june.jpg')",
-        "url('july.jpg')", "url('august.jpg')", "url('september.jpg')",
-        "url('october.jpg')", "url('november.jpg')", "url('december.jpg')"
+        "url('images/january.jpg')", "url('images/february.jpg')", "url('images/marchh.jpg')",
+        "url('images/april.jpg')", "url('images/may.jpg')", "url('images/june.jpg')",
+        "url('images/july.jpg')", "url('images/august.jpg')", "url('images/september.jpg')",
+        "url('images/october.jpg')", "url('images/november.jpg')", "url('images/december.jpg')"
     ];
 
     const monthNames = ["January", "February", "March", "April", "May", "June",
