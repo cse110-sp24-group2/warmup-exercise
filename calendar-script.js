@@ -2,14 +2,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const calendarContainer = document.getElementById('calendar');
     const monthLabel = document.getElementById('current-month');
     let currentDate = new Date();
+    let currentDay = currentDate.getDate();
     let currentMonth = currentDate.getMonth();
     let currentYear = currentDate.getFullYear();
+    let entries = {};
 
     const monthBackgrounds = [
-        "url('january.jpg')", "url('february.jpg')", "url('marchh.jpg')",
-        "url('april.jpg')", "url('may.jpg')", "url('june.jpg')",
-        "url('july.jpg')", "url('august.jpg')", "url('september.jpg')",
-        "url('october.jpg')", "url('november.jpg')", "url('december.jpg')"
+        "url('images/january.jpg')", "url('images/february.jpg')", "url('images/marchh.jpg')",
+        "url('images/april.jpg')", "url('images/may.jpg')", "url('images/june.jpg')",
+        "url('images/july.jpg')", "url('images/august.jpg')", "url('images/september.jpg')",
+        "url('images/october.jpg')", "url('images/november.jpg')", "url('images/december.jpg')"
     ];
 
     const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -24,11 +26,74 @@ document.addEventListener('DOMContentLoaded', function() {
         monthLabel.className = ''; // Clear previous class
         monthLabel.classList.add(monthClasses[currentMonth]); // Apply new class for font color
     }
-
     function daysInMonth(month, year) {
         return new Date(year, month + 1, 0).getDate();
     }
+    // Get the form and the entries list
+    const entryForm = document.getElementById('entry-form');
+    const entryInput = document.getElementById('entry');
+    const entriesList = document.getElementById('entries');
 
+    // Handle the form submission
+    entryForm.onsubmit = function(e) {
+        e.preventDefault();
+        // Add the new entry
+        addEntry(currentDay, currentMonth, currentYear, entryInput.value);
+        // Clear the input field
+        entryInput.value = '';
+        // Reload the entries
+        loadEntries(currentDay, currentMonth, currentYear);
+    }
+    function clearForm() {
+        entriesList.innerHTML = '';
+        entryInput.value = '';
+    }
+
+    // Add a new entry
+    function addEntry(day, month, year, entry) {
+        // Get the date string
+        let dateString = `${day}-${month}-${year}`;
+        // If there are no entries for this date, create an array
+        if (!entries[dateString]) {
+            entries[dateString] = [];
+        }
+        // Add the new entry
+        entries[dateString].push(entry);
+    }
+
+    // Load the entries for a specific day
+    function loadEntries(day, month, year) {
+        // Clear the entries list
+        entriesList.innerHTML = '';
+        // Display the entries
+        for (let i = 0; i < getEntries(day, month, year).length; i++) {
+            let entry = document.createElement('li');
+            entry.textContent = getEntries(day, month, year)[i];
+            // Add a delete button
+            let deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = function() {
+                // Delete this entry
+                getEntries(day, month, year).splice(i, 1);
+                // Reload the entries
+                loadEntries(day, month, year);
+            };
+            entry.appendChild(deleteButton);
+            entriesList.appendChild(entry);
+        }
+    }
+
+    // Get the entries for a specific day
+    function getEntries(day, month, year) {
+        // Get the date string
+        let dateString = `${day}-${month}-${year}`;
+        // If there are no entries for this date, return an empty array
+        if (!entries[dateString]) {
+            return [];
+        }
+        // Otherwise, return the entries for this date
+        return entries[dateString];
+    }
     function createCalendar(month, year) {
         updateMonthYear();
 
@@ -53,9 +118,16 @@ document.addEventListener('DOMContentLoaded', function() {
             dayElement.classList.add('day');
             dayElement.textContent = day;
             dayElement.onclick = function() {
-                alert(`You clicked on ${day} of ${monthNames[month]}, ${year}`);
+                currentDay = day;
+                currentMonth = month;
+                currentYear = year;
+                loadEntries(currentDay, currentMonth, currentYear);
+                modal.style.display = "block";
+                modalDate.textContent = `${day} of ${monthNames[month]}, ${year}`;
+
             };
             calendarContainer.appendChild(dayElement);
+
         }
 
         // Fill the week with days from the next month
@@ -83,6 +155,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         createCalendar(currentMonth, currentYear);
     }
-
     createCalendar(currentMonth, currentYear);
+    const closeButton = document.getElementById('close-form');
+    closeButton.onclick = function() {
+        // Hide the form
+        document.getElementById('modal').style.display = 'none';
+    };
 });

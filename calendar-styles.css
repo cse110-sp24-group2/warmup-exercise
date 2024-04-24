@@ -78,3 +78,60 @@ body {
 .october { color: #d45810; }  
 .november { color: #343a40; } 
 .december { color: #53697d; } 
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+#entry-form {
+    margin-bottom: 1em;
+}
+
+#entries-list {
+    list-style-type: none;
+    padding: 0;
+}
+.day-names {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 0px;
+    width: 95%;
+    max-width: 660px;
+    margin: auto;
+}
+
+.day-name {
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+    border: none;
+}
