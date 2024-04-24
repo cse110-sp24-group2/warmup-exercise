@@ -17,6 +17,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const monthClasses = ["january", "february", "march", "april", "may", "june",
                           "july", "august", "september", "october", "november", "december"];
+    const holidays = [
+    new Date(currentYear, 0, 1), // New Year's Day
+    new Date(currentYear, 1, 14), // Valentine's Day
+    new Date(currentYear, 6, 4), // Independence Day
+    new Date(currentYear, 10, 11), // Veterans Day
+    new Date(currentYear, 11, 25), // Christmas Day
+    ];
 
     function updateMonthYear() {
         monthLabel.textContent = `${monthNames[currentMonth]} ${currentYear}`;
@@ -51,6 +58,14 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let day = 1; day <= daysInMonth(month, year); day++) {
             const dayElement = document.createElement('div');
             dayElement.classList.add('day');
+            dayElement.textContent = day;
+
+            const currentDate = new Date(year, month, day);
+            const isHoliday = holidays.some(holiday => holiday.toDateString() === currentDate.toDateString());
+            if (isHoliday){
+                dayElement.classList.add('holiday');
+            }
+
             dayElement.textContent = day;
             dayElement.onclick = function() {
                 alert(`You clicked on ${day} of ${monthNames[month]}, ${year}`);
