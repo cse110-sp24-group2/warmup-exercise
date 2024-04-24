@@ -1,0 +1,78 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background:no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.8); 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+    font-family: fantasy;
+    font-weight: bold;
+}
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.8); 
+    width: 95%;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.day {
+    padding: 15px 10px;
+    background-color: #ffffff;
+    border: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.day:hover {
+    background-color: #cf9fc2;
+    transform: translateY(-3px);
+    cursor: pointer;
+    box-shadow: 0 4px 5px rgba(0,0,0,0.1);
+}
+
+.day.spring {
+    color: #ff69b4;
+}
+
+.day.summer {
+    color: #008000; 
+}
+
+.day.fall {
+    color: #ffa500; 
+}
+
+.day.winter {
+    color: #0000ff; 
+}
+
+.month-color {
+   
+    color: #333;
+}
+
+.january { color: #007BFF; }  
+.february { color: #accbed; } 
+.march { color: #28a745; }   
+.april { color: #e83e8c; }   
+.may { color: #790258; }     
+.june { color: #154a27; }    
+.july { color: #17a2b8; }     
+.august { color: #27a89d; }   
+.september { color: #dc3545; }
+.october { color: #d45810; }  
+.november { color: #343a40; } 
+.december { color: #53697d; } 
