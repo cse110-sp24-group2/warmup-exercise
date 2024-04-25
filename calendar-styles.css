@@ -203,7 +203,63 @@ body {
 .holiday {
     color: red;
 }
+/* MY CHANGES */
 
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* MOBILE RESPONSIVENESS BREAKPOINT - TABLET */
+
+@media (min-width: 426px) and (max-width: 1024px) {
+    .calendar-container {
+        overflow: hidden;
+    }
+
+    #day-names {
+        display: flex;
+        align-items: center;
+        grid-template-columns: repeat(3, 1fr);
+
+        .day-name {
+            width: 95%;
+        }
+    }
+
+    #day-names > .day-name {
+        width: 80%;
+    }
+
+    .day {
+        width: 70%
+    }
+}
+
+/* MOBILE RESPONSIVENESS BREAKPOINT - PHONE */
+@media (max-width: 426px)  {
+    .calendar-container {
+        margin: 0 3%;
+    }
+
+    .calendar-header {
+        justify-content: center;
+        width: 100vw;
+        gap: 7%;
+    }
+
+    #calendar {
+        grid-template-columns: repeat(7, 12.5%);
+        padding-right: 1%;
+        gap: 1.5vw;
+    }
+
+    #day-names {
+        grid-template-columns: repeat(7, 13vw);
+        font-size: 70%;
+    }
 #prev-month {
     background-color: #ffffff;
     color: #343434;
