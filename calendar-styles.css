@@ -88,6 +88,8 @@ body {
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
+    font-family: fantasy;
+    font-weight: 500
 }
 
 .modal-content {
@@ -168,7 +170,7 @@ body {
 
 .day-names {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
     padding: 0px;
     width: 95%;
     max-width: 660px;
