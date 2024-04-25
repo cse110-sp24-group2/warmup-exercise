@@ -98,6 +98,8 @@ body {
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
+    font-family: fantasy;
+    font-weight: 500
 }
 
 .modal-content {
@@ -178,8 +180,9 @@ body {
 
 .day-names {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
     padding: 0px;
+    padding-top: 10px;
     width: 95%;
     max-width: 660px;
     margin: auto;
@@ -187,10 +190,14 @@ body {
 
 .day-name {
     text-align: center;
+    font-size:120%;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.8);
     font-weight: bold;
     border: none;
+    color: rgb(15, 2, 70);
+    text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
+    font-family: "Times New Roman", Times, serif;
 }
 
 .holiday {
