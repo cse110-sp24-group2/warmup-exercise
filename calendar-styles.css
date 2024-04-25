@@ -76,3 +76,27 @@ body {
 .october { color: #d45810; }  
 .november { color: #343a40; } 
 .december { color: #53697d; } 
+
+/* Base CSS for background */
+.background-element {
+    background-image: url('images/january.jpg');
+    background-size: contain; /* Ensures the entire image is visible */
+    background-position: center;
+    height: 100vh; 
+    width: 100%; 
+  }
+  
+  /* For smaller screens, use 'cover' to ensure the background fills the area */
+  @media (max-width: 800px) {
+    .background-element {
+      background-size: cover;
+    }
+  }
+  
+  /* For very large screens, you can specify a maximum size */
+  @media (min-width: 1200px) {
+    .background-element {
+      background-size: 80%;
+      background-repeat: no-repeat; 
+    }
+  }
