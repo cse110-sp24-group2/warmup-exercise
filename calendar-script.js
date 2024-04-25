@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentMonth = currentDate.getMonth();
     let currentYear = currentDate.getFullYear();
     let entries = {};
-
     const monthBackgrounds = [
         "url('images/january.jpg')", "url('images/february.jpg')", "url('images/marchh.jpg')",
         "url('images/april.jpg')", "url('images/may.jpg')", "url('images/june.jpg')",
@@ -19,6 +18,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const monthClasses = ["january", "february", "march", "april", "may", "june",
                           "july", "august", "september", "october", "november", "december"];
+    const holidays = [
+    new Date(currentYear, 0, 1), // New Year's Day
+    new Date(currentYear, 1, 14), // Valentine's Day
+    new Date(currentYear, 6, 4), // Independence Day
+    new Date(currentYear, 10, 11), // Veterans Day
+    new Date(currentYear, 11, 25), // Christmas Day
+    ];
 
     function updateMonthYear() {
         monthLabel.textContent = `${monthNames[currentMonth]} ${currentYear}`;
@@ -118,6 +124,11 @@ document.addEventListener('DOMContentLoaded', function() {
             dayElement.classList.add('day', monthClasses[month]); // Adds specific month class
             dayElement.textContent = day;
             calendarContainer.appendChild(dayElement);
+            const currentDate = new Date(year, month, day);
+            const isHoliday = holidays.some(holiday => holiday.toDateString() === currentDate.toDateString());
+            if (isHoliday){
+                dayElement.classList.add('holiday');
+            }
             dayElement.onclick = function() {
                 currentDay = day;
                 currentMonth = month;
