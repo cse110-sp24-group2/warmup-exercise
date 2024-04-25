@@ -7,11 +7,12 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentYear = currentDate.getFullYear();
     let entries = {};
     const monthBackgrounds = [
-        "url('images/january.jpg')", "url('images/february.jpg')", "url('images/marchh.jpg')",
-        "url('images/april.jpg')", "url('images/may.jpg')", "url('images/june.jpg')",
-        "url('images/july.jpg')", "url('images/august.jpg')", "url('images/september.jpg')",
-        "url('images/october.jpg')", "url('images/november.jpg')", "url('images/december.jpg')"
+        "url('background-images/january.jpg')", "url('background-images/february.jpg')", "url('background-images/march.jpg')",
+        "url('background-images/april.jpg')", "url('background-images/may.jpg')", "url('background-images/june.jpg')",
+        "url('background-images/july.jpg')", "url('background-images/august.jpg')", "url('background-images/september.jpg')",
+        "url('background-images/october.jpg')", "url('background-images/november.jpg')", "url('background-images/december.jpg')"
     ];
+
 
     const monthNames = ["January", "February", "March", "April", "May", "June",
                         "July", "August", "September", "October", "November", "December"];
@@ -78,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add a delete button
             let deleteButton = document.createElement('button');
             deleteButton.textContent = 'Delete';
+            deleteButton.className = 'delete-button';
             deleteButton.onclick = function() {
                 // Delete this entry
                 getEntries(day, month, year).splice(i, 1);
