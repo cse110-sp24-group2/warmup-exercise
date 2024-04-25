@@ -122,9 +122,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentMonth = month;
                 currentYear = year;
                 loadEntries(currentDay, currentMonth, currentYear);
+                // modal.style.display = "block";
+                // modalDate.textContent = `${day} of ${monthNames[month]}, ${year}`;
+                const modal = document.getElementById('modal'); 
+                const modalDate = document.getElementById('modal-date'); // Get the modal date element
                 modal.style.display = "block";
                 modalDate.textContent = `${day} of ${monthNames[month]}, ${year}`;
 
+                //Set background colour class for modal
+                modal.className = 'modal ' + monthClasses[month];
             };
             calendarContainer.appendChild(dayElement);
 
@@ -158,6 +164,12 @@ document.addEventListener('DOMContentLoaded', function() {
     createCalendar(currentMonth, currentYear);
     const closeButton = document.getElementById('close-form');
     closeButton.onclick = function() {
+        // Hide the form
+        document.getElementById('modal').style.display = 'none';
+    };
+
+    const crossButton = document.querySelector('.close');
+    crossButton.onclick = function() {
         // Hide the form
         document.getElementById('modal').style.display = 'none';
     };
