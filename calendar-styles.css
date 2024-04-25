@@ -1,5 +1,15 @@
+* {
+    font-family: 'Rubik', sans-serif;
+}
+
+.rubik-font {
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
     background:no-repeat center center fixed;
     background-size: cover;
     color: #333;
@@ -191,6 +201,58 @@ body {
     text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
     font-family: "Times New Roman", Times, serif;
 }
+
 .holiday {
     color: red;
 }
+
+#prev-month {
+    background-color: #ffffff;
+    color: #343434;
+    border: 2px solid #ccc;
+    border-radius: 7px;
+    padding: 5px 10px;
+    font-size: 14.5px;
+    cursor: pointer;
+}
+  
+#prev-month:hover {
+    background-color: #eaeaea; 
+    color:rgb(0, 0, 0);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+#next-month {
+    background-color: #ffffff;
+    color: #343434;
+    border: 2px solid #ccc;
+    border-radius: 7px;
+    padding: 5px 10px;
+    font-size: 14.5px;
+    cursor: pointer;
+}
+  
+#next-month:hover {
+    background-color: #eaeaea; 
+    color:rgb(0, 0, 0);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.arrow {
+    border: solid #595959;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+}
+  
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+
