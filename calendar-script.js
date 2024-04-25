@@ -121,8 +121,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add the days of the current month
         for (let day = 1; day <= daysInMonth(month, year); day++) {
             const dayElement = document.createElement('div');
-            dayElement.classList.add('day');
+            dayElement.classList.add('day', monthClasses[month]); // Adds specific month class
             dayElement.textContent = day;
+            calendarContainer.appendChild(dayElement);
             const currentDate = new Date(year, month, day);
             const isHoliday = holidays.some(holiday => holiday.toDateString() === currentDate.toDateString());
             if (isHoliday){
@@ -140,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
             calendarContainer.appendChild(dayElement);
 
         }
+
 
         // Fill the week with days from the next month
         let num = 1;
