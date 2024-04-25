@@ -88,40 +88,89 @@ body {
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
+    font-family: fantasy;
+    font-weight: 500
 }
 
 .modal-content {
+    position: relative;
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 50%; 
+    box-shadow: 0 4px 8px rgba(1, 0, 0, 0.2);
 }
 
+
+/* Animation to slide the modal content from the top */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+
 .close {
-    color: #aaa;
+    color:  #4e253c;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
+    color:  hsl(330, 100%, 52%);
     text-decoration: none;
-    cursor: pointer;
-}
-#entry-form {
-    margin-bottom: 1em;
 }
 
-#entries-list {
-    list-style-type: none;
-    padding: 0;
+#entry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
 }
+
+#entry-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#entry-form input[type="text"],
+#entry-form input[type="submit"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#entry-form input[type="submit"] {
+    background-color:  #c73485;
+    color: white;
+    cursor: pointer;
+}
+
+#entry-form input[type="submit"]:hover {
+    background-color: #88cb8a;
+}
+
+#close-form {
+    padding: 10px 20px;
+    background-color: #6c2b56;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+#close-form:hover {
+    background-color: #ed9693;
+}
+
 .day-names {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
     padding: 0px;
     padding-top: 10px;
     width: 95%;
@@ -139,4 +188,7 @@ body {
     color: rgb(15, 2, 70);
     text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
     font-family: "Times New Roman", Times, serif;
+}
+.holiday {
+    color: red;
 }

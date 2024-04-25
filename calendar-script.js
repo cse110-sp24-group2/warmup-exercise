@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentMonth = currentDate.getMonth();
     let currentYear = currentDate.getFullYear();
     let entries = {};
-
     const monthBackgrounds = [
         "url('images/january.jpg')", "url('images/february.jpg')", "url('images/marchh.jpg')",
         "url('images/april.jpg')", "url('images/may.jpg')", "url('images/june.jpg')",
@@ -19,6 +18,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const monthClasses = ["january", "february", "march", "april", "may", "june",
                           "july", "august", "september", "october", "november", "december"];
+    const holidays = [
+    new Date(currentYear, 0, 1), // New Year's Day
+    new Date(currentYear, 1, 14), // Valentine's Day
+    new Date(currentYear, 6, 4), // Independence Day
+    new Date(currentYear, 10, 11), // Veterans Day
+    new Date(currentYear, 11, 25), // Christmas Day
+    ];
 
     function updateMonthYear() {
         monthLabel.textContent = `${monthNames[currentMonth]} ${currentYear}`;
@@ -115,20 +121,33 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add the days of the current month
         for (let day = 1; day <= daysInMonth(month, year); day++) {
             const dayElement = document.createElement('div');
-            dayElement.classList.add('day');
+            dayElement.classList.add('day', monthClasses[month]); // Adds specific month class
             dayElement.textContent = day;
+            calendarContainer.appendChild(dayElement);
+            const currentDate = new Date(year, month, day);
+            const isHoliday = holidays.some(holiday => holiday.toDateString() === currentDate.toDateString());
+            if (isHoliday){
+                dayElement.classList.add('holiday');
+            }
             dayElement.onclick = function() {
                 currentDay = day;
                 currentMonth = month;
                 currentYear = year;
                 loadEntries(currentDay, currentMonth, currentYear);
+                // modal.style.display = "block";
+                // modalDate.textContent = `${day} of ${monthNames[month]}, ${year}`;
+                const modal = document.getElementById('modal'); 
+                const modalDate = document.getElementById('modal-date'); // Get the modal date element
                 modal.style.display = "block";
                 modalDate.textContent = `${day} of ${monthNames[month]}, ${year}`;
 
+                //Set background colour class for modal
+                modal.className = 'modal ' + monthClasses[month];
             };
             calendarContainer.appendChild(dayElement);
 
         }
+
 
         // Fill the week with days from the next month
         let num = 1;
@@ -158,6 +177,12 @@ document.addEventListener('DOMContentLoaded', function() {
     createCalendar(currentMonth, currentYear);
     const closeButton = document.getElementById('close-form');
     closeButton.onclick = function() {
+        // Hide the form
+        document.getElementById('modal').style.display = 'none';
+    };
+
+    const crossButton = document.querySelector('.close');
+    crossButton.onclick = function() {
         // Hide the form
         document.getElementById('modal').style.display = 'none';
     };
