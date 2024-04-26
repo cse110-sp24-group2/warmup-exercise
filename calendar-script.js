@@ -27,6 +27,15 @@ document.addEventListener('DOMContentLoaded', function() {
     new Date(currentYear, 11, 25), // Christmas Day
     ];
 
+    let dayInfo = {
+        date: '',
+        startTime: '',
+        endTime: '',
+        description: '',
+        attendees: '',
+        urgent: false,
+    }
+
     function updateMonthYear() {
         monthLabel.textContent = `${monthNames[currentMonth]} ${currentYear}`;
         document.body.style.backgroundImage = monthBackgrounds[currentMonth];
@@ -75,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Display the entries
         for (let i = 0; i < getEntries(day, month, year).length; i++) {
             let entry = document.createElement('li');
+            entry.setAttribute("class", "entry-item");
             entry.textContent = getEntries(day, month, year)[i];
             // Add a delete button
             let deleteButton = document.createElement('button');

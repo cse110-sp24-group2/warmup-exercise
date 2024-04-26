@@ -138,6 +138,13 @@ body {
     text-decoration: none;
 }
 
+.entry-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
 #entry-form {
     display: flex;
     flex-direction: column;
@@ -246,6 +253,10 @@ body {
         margin: 0 3%;
     }
 
+    .entry-item {
+        gap: 0.75rem;
+    }
+
     .calendar-header {
         justify-content: center;
         width: 100vw;
@@ -262,6 +273,8 @@ body {
         grid-template-columns: repeat(7, 13vw);
         font-size: 70%;
     }
+}
+
 #prev-month {
     background-color: #ffffff;
     color: #343434;
