@@ -48,18 +48,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get the form and the entries list
     const entryForm = document.getElementById('entry-form');
     const entryInput = document.getElementById('entry');
+    const entryInputTime = document.getElementById('entryTime');
     const entriesList = document.getElementById('entries');
 
     // Handle the form submission
     entryForm.onsubmit = function(e) {
         e.preventDefault();
         // Add the new entry
-        addEntry(currentDay, currentMonth, currentYear, entryInput.value);
+        addEntry(currentDay, currentMonth, currentYear, (entryInput.value + " @ " + entryInputTime.value));
         // Clear the input field
         entryInput.value = '';
         // Reload the entries
         loadEntries(currentDay, currentMonth, currentYear);
     }
+    
     function clearForm() {
         entriesList.innerHTML = '';
         entryInput.value = '';
