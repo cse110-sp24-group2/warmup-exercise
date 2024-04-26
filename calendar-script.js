@@ -48,18 +48,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get the form and the entries list
     const entryForm = document.getElementById('entry-form');
     const entryInput = document.getElementById('entry');
+    const entryInputTime = document.getElementById('entryTime');
     const entriesList = document.getElementById('entries');
 
     // Handle the form submission
     entryForm.onsubmit = function(e) {
         e.preventDefault();
         // Add the new entry
-        addEntry(currentDay, currentMonth, currentYear, entryInput.value);
+        addEntry(currentDay, currentMonth, currentYear, (entryInput.value + " @ " + entryInputTime.value));
         // Clear the input field
         entryInput.value = '';
         // Reload the entries
         loadEntries(currentDay, currentMonth, currentYear);
     }
+
     function clearForm() {
         entriesList.innerHTML = '';
         entryInput.value = '';
@@ -110,7 +112,13 @@ document.addEventListener('DOMContentLoaded', function() {
             return [];
         }
         // Otherwise, return the entries for this date
-        return entries[dateString];
+        return entries[dateString].sort((a,b) => {
+            
+            const time1 = a.substring(a.length - 5);
+            const time2 = b.substring(b.length - 5);
+
+            return time1.localeCompare(time2);
+        });
     }
     function createCalendar(month, year) {
         updateMonthYear();
