@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Reload the entries
         loadEntries(currentDay, currentMonth, currentYear);
     }
-    
+
     function clearForm() {
         entriesList.innerHTML = '';
         entryInput.value = '';
@@ -112,7 +112,13 @@ document.addEventListener('DOMContentLoaded', function() {
             return [];
         }
         // Otherwise, return the entries for this date
-        return entries[dateString];
+        return entries[dateString].sort((a,b) => {
+            
+            const time1 = a.substring(a.length - 5);
+            const time2 = b.substring(b.length - 5);
+
+            return time1.localeCompare(time2);
+        });
     }
     function createCalendar(month, year) {
         updateMonthYear();
