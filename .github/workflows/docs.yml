@@ -1,0 +1,22 @@
+name: Documentation Generation # name of the test
+
+on: 
+    # Run when pushes are made to main branches
+    push:
+        branches:
+            - cicdtestmain
+            - cicdtestfeature
+
+jobs: # the things being executed
+  tests:
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v4 # using version 4 of Actions
+      - name: JSDoc Generation # Generate the docs for JS info
+        uses: andstor/jsdoc-action@v1.2.1
+        with:
+          source_dir: ./src
+          recurse: true
+          output_dir: ./docs
+
+  

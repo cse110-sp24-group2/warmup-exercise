@@ -1,0 +1,18 @@
+name: Ensure Quality # name of the test
+
+on: 
+    # Run when pull requests are made to main branches
+    pull_request:
+        branches:
+            - cicdtestmain
+            - cicdtestfeature
+
+jobs: # the things being executed
+  tests:
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v4 # using version 4 of Actions
+      - name: Install Dependencies
+        run: npm install
+      - name: Run Unit Tests
+        run: npm test ./tests/*.js
