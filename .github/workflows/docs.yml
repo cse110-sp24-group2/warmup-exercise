@@ -1,15 +1,17 @@
 name: Documentation Generation # name of the test
 
-on: 
-    # Run when pushes are made to main branches
-    push:
-        branches:
-            - cicdtestmain
-            - cicdtestfeature
+on:
+  # Run when pushes are made to main branches
+  push:
+    branches:
+      - cicdtestmain
+      - cicdtestfeature
+permissions:
+  contents: write
 
 jobs: # the things being executed
-  tests:
-    runs-on: ubuntu-latest 
+  doc_gen:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4 # using version 4 of Actions
       - name: JSDoc Generation # Generate the docs for JS info
@@ -18,5 +20,10 @@ jobs: # the things being executed
           source_dir: ./src
           recurse: true
           output_dir: ./docs
-
-  
+      - name: Commit JSDoc
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Documentation Generated"
+          git push
