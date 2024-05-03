@@ -21,9 +21,12 @@ jobs: # the things being executed
           recurse: true
           output_dir: ./docs
           front_page: README.md
+      - name: Checkout PR
+        env: 
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr checkout ${{ github.event.pull_request.number }}
       - name: Commit JSDoc
         run: |
-          gh pr checkout ${{ github.event.pull_request.number }}
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
