@@ -1,4 +1,15 @@
+/**
+ * Get the number of days in a given month
+ * @param {number} month The month (0-11) to get the days for
+ * @param {number} year The year to get the days for
+ * @returns The number of days in the month
+ */
+function daysInMonth(month, year) {
+    return new Date(year, month + 1, 0).getDate();
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+
     const calendarContainer = document.getElementById('calendar');
     const monthLabel = document.getElementById('current-month');
     let currentDate = new Date();
@@ -42,9 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         monthLabel.className = ''; // Clear previous class
         monthLabel.classList.add(monthClasses[currentMonth]); // Apply new class for font color
     }
-    function daysInMonth(month, year) {
-        return new Date(year, month + 1, 0).getDate();
-    }
+    
     // Get the form and the entries list
     const entryForm = document.getElementById('entry-form');
     const entryInput = document.getElementById('entry');
