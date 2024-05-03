@@ -20,6 +20,7 @@ jobs: # the things being executed
           source_dir: ./src
           recurse: true
           output_dir: ./docs
+          front_page: README.md
       - name: Commit JSDoc
         run: |
           git config user.name github-actions
