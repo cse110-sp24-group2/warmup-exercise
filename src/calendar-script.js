@@ -8,6 +8,24 @@ function daysInMonth(month, year) {
     return new Date(year, month + 1, 0).getDate();
 }
 
+/**
+ * Add an entry into the system
+ * @param {*} day The day to record it on
+ * @param {*} month The month to record it on
+ * @param {*} year The year to record it on
+ * @param {*} entry The actual entry to add
+ */
+function addEntry(day, month, year, entry) {
+    // Get the date string
+    let dateString = `${day}-${month}-${year}`;
+    // If there are no entries for this date, create an array
+    if (!entries[dateString]) {
+        entries[dateString] = [];
+    }
+    // Add the new entry
+    entries[dateString].push(entry);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 
     const calendarContainer = document.getElementById('calendar');
@@ -76,17 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
         entryInput.value = '';
     }
 
-    // Add a new entry
-    function addEntry(day, month, year, entry) {
-        // Get the date string
-        let dateString = `${day}-${month}-${year}`;
-        // If there are no entries for this date, create an array
-        if (!entries[dateString]) {
-            entries[dateString] = [];
-        }
-        // Add the new entry
-        entries[dateString].push(entry);
-    }
+    
 
     // Load the entries for a specific day
     function loadEntries(day, month, year) {
