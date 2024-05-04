@@ -2,10 +2,9 @@ name: Ensure Quality # name of the test
 
 on: 
     # Run when pull requests are made to main branches
-    pull_request:
-        branches:
-            - cicdtestmain
-            - cicdtestfeature
+    workflow_run:
+        workflows: [Documentation Generation]
+        types: completed
 
 jobs: # the things being executed
   tests:
