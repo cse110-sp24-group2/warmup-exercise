@@ -15,8 +15,7 @@ jobs: # the things being executed
     steps:
       - uses: actions/checkout@v4 # using version 4 of Actions
         with:
-          ref: ${{ github.head_ref }}
-          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
       - name: JSDoc Generation # Generate the docs for JS info
         uses: andstor/jsdoc-action@v1.2.1
         with:
@@ -34,3 +33,4 @@ jobs: # the things being executed
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
