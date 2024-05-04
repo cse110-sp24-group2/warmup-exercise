@@ -4,7 +4,7 @@ on:
     # Run when pull requests are made to main branches
     workflow_run:
         workflows: [Documentation Generation]
-        types: completed
+        types: [completed]
 
 jobs: # the things being executed
   tests:
