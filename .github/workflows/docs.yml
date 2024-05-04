@@ -6,6 +6,7 @@ on:
     branches:
       - cicdtestmain
       - cicdtestfeature
+    types: [opened, reopened]
 permissions:
   contents: write
 
@@ -14,8 +15,6 @@ jobs: # the things being executed
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4 # using version 4 of Actions
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
       - name: JSDoc Generation # Generate the docs for JS info
         uses: andstor/jsdoc-action@v1.2.1
         with:
@@ -29,7 +28,4 @@ jobs: # the things being executed
           git config user.email github-actions@github.com
           git add .
           git commit -m "Documentation Generated"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          git push
