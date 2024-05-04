@@ -17,3 +17,10 @@ export function sum(a, b) {
 export function mul(a, b) {
   return a * b;
 }
+
+/**
+ * Testing
+ */
+export function test() {
+
+}
