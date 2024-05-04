@@ -6,7 +6,6 @@ on:
     branches:
       - cicdtestmain
       - cicdtestfeature
-    types: [opened, reopened, edited]
 permissions:
   contents: write
 
