@@ -6,6 +6,8 @@ on:
         branches:
             - cicdtestmain
             - cicdtestfeature
+permissions:
+    contents: write
 
 jobs: # the things being executed
   tests:
