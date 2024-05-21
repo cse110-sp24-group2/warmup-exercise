@@ -8,6 +8,8 @@ function daysInMonth(month, year) {
   return new Date(year, month + 1, 0).getDate();
 }
 
+let x = 5;
+
 /**
  * Add an entry into the system
  * @param {*} day The day to record it on
