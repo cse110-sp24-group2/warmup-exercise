@@ -20,5 +20,12 @@
     "server": {
         "command": "http-server . -p 3000"
     }
+  },
+  "jsdoc": {
+    "templates": {
+      "default": {
+        "includeDate": false
+      }
+    }
   }
 }
