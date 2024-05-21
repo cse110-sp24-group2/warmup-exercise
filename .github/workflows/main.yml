@@ -33,7 +33,7 @@ jobs: # the things being executed
           source_dir: ./src
           recurse: true
           output_dir: ./docs
-          config_file: jsdocconfig.js
+          config_file: jsdconf.json
           front_page: README.md
       - name: Commit JSDoc
         run: |
